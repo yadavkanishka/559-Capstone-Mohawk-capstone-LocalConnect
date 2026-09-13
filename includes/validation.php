@@ -22,6 +22,6 @@ function isPasswordValid($password) {
     if (!preg_match('/[\W_]/', $password)) {
         return false;
     }
-    
+    return true; 
 }
 ?>
