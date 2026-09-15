@@ -1,0 +1,19 @@
+<?php
+// LocalConnect - Application bootstrap. 
+
+error_reporting(E_ALL);
+ini_set('display_errors', '0'); // don't leak errors to users
+ini_set('log_errors', '1');
+if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params([
+        'httponly' => true,
+        'samesite' => 'Lax',
+        'path'     => '/',
+    ]);
+    session_start();
+}
+
+ensure_schema();
+ensure_migrations();
+
+?>
