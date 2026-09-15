@@ -7,11 +7,11 @@ $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = trim($_POST['email']);
-    $password = $_POST['password'];
+    $userPassword = $_POST['password'];
     $full_name = trim($_POST['full_name']);
 
     // Check required fields
-    if (empty($email) || empty($password) || empty($full_name)) {
+    if (empty($email) || empty($userPassword) || empty($full_name)) {
         $message = "All fields are required.";
     }
 
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validate password
-    elseif (!isPasswordValid($password)) {
+    elseif (!isPasswordValid($userPassword)) {
         $message = "Password must be at least 8 characters and include uppercase, lowercase, a number, and a special character.";
     }
 
@@ -43,8 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
 
                 // Hash password before storing it
-                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
+                $passwordHash = password_hash($userPassword, PASSWORD_DEFAULT);
                 // Insert new user
                 $stmt = $conn->prepare(
                     "INSERT INTO users (email, password_hash, full_name)
