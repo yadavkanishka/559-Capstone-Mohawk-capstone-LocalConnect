@@ -25,44 +25,33 @@ function isPasswordValid(string $password) {
     return true; 
 }
 function passwordRequirementsText() {
-
     return "Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number, and a special character.";
-
 }
 
 function isEmailValid($email) {
-
     return (bool) filter_var($email, FILTER_VALIDATE_EMAIL);
-
 }
+
 //  it should Return an array of validation error strings for registration
 
 function validateRegistration($email, $password, $full_name) {
 
     $errors = [];
 
-    if ($full_name === '') {
+        if ($full_name === '') {
+            $errors[] = "Full name is required.";
+        }
 
-        $errors[] = "Full name is required.";
-
-    }
-
-    if ($email === '') {
-
-        $errors[] = "Email is required.";
-
-    } elseif (!isEmailValid($email)) {
-
-        $errors[] = "Please enter a valid email address.";
-
-    }
-
-    if (!isPasswordValid($password)) {
-
-        $errors[] = passwordRequirementsText();
-
-    }
-
+        if ($email === '') {
+            $errors[] = "Email is required.";
+        } 
+            elseif (!isEmailValid($email)) 
+            {
+                $errors[] = "Please enter a valid email address.";
+            }
+        if (!isPasswordValid($password)) {
+            $errors[] = passwordRequirementsText();
+        }
     return $errors;
 
 }
