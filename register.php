@@ -1,6 +1,6 @@
 <?php
-require_once 'config/db.php';
-require_once 'includes/validation.php';
+require_once __DIR__ . '/config/config.php';
+if (is_logged_in()) redirect('/posts.php');
 
 $message = "";
 
