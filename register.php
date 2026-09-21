@@ -6,9 +6,11 @@ $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    verify_csrf();
     $email = trim($_POST['email']);
     $userPassword = $_POST['password'];
     $full_name = trim($_POST['full_name']);
+    $location = trim($_POST['location'] ?? '');
 
     // Check required fields
     if (empty($email) || empty($userPassword) || empty($full_name)) {
@@ -46,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $passwordHash = password_hash($userPassword, PASSWORD_DEFAULT);
                 // Insert new user
                 $stmt = $conn->prepare(
-                    "INSERT INTO users (email, password_hash, full_name)
-                     VALUES (:email, :password_hash, :full_name)"
+                    "INSERT INTO users (email, password_hash, full_name, location)
+                     VALUES (:email, :password_hash, :full_name, :location)"
                 );
 
                 $stmt->execute([
@@ -77,6 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <h1>Create an Account</h1>
 
 <form method="POST">
+    <?= csrf_field() ?>
 
     <label>Email:</label>
     <input type="email" name="email" required>
@@ -89,6 +92,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label>Full Name:</label>
     <input type="text" name="full_name" required>
     <br><br>
+
+    <label>Location:</label>
+    <input type="text" name="location" placeholder="e.g. Toronto, ON">
+    <br><br>
+    
 
     <button type="submit">Register</button>
 
