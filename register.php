@@ -55,9 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->execute([
                     ':email' => $email,
                     ':password_hash' => $passwordHash,
-                    ':full_name' => $full_name
+                    ':full_name' => $full_name,
+                    ':location' => $location
                 ]);
 
+                $user = ['id' => $conn->lastInsertId()];
+                login_user($user);
                 $message = "Registration successful!";
             }
 
