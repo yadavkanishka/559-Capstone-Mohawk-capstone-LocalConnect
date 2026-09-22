@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $user = ['id' => $conn->lastInsertId()];
                 login_user($user);
-                $message = "Registration successful!";
+                redirect('/posts.php');
             }
 
         } catch (PDOException $e) {
