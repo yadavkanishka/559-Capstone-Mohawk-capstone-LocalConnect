@@ -114,3 +114,27 @@ require __DIR__ . '/includes/header.php';
 </div>
 
 </form>
+
+<?php if ($q || $location || $skill): ?>
+    <p class="muted mb-2">
+        <?= count($posts) ?> result(s)
+        <a href="/posts.php" data-testid="clear-filters-link">&times; clear filters</a>
+    </p>
+<?php endif; ?>
+
+<?php if ($posts): ?>
+    <div class="feed-grid" data-testid="posts-grid">
+        <?php foreach ($posts as $p): require __DIR__ . '/includes/post_card.php'; endforeach; ?>
+    </div>
+<?php else: ?>
+    <div class="empty" data-testid="posts-empty">
+        <div class="icon">&#128302;</div>
+        <h3>No collaborations found</h3>
+        <p>Try adjusting your filters, or be the first to post one.</p>
+        <?php if (is_logged_in()): ?>
+            <a href="/post-create.php" class="btn btn-primary mt-2">Post a collaboration</a>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+</div>
+<?php require __DIR__ . '/includes/footer.php'; ?>
