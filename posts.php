@@ -26,3 +26,17 @@ if ($skill !== '') {
 }
 
 $whereSql = $where ? ('WHERE ' . implode(' AND ', $where)) : '';
+
+switch ($sort) {
+    case 'date_asc':
+        $orderSql = "ORDER BY p.created_at ASC";
+        break;
+
+    case 'location':
+        $orderSql = "ORDER BY p.location ASC, p.created_at DESC";
+        break;
+
+    default:
+        $orderSql = "ORDER BY p.created_at DESC";
+        $sort = 'date_desc';
+}
