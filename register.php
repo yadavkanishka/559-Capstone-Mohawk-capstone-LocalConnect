@@ -1,9 +1,5 @@
 <?php
 require_once __DIR__ . '/config/config.php';
-$user = ['id' => $conn->lastInsertId()];
-login_user($user);
-redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
-
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
