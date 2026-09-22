@@ -40,3 +40,35 @@ switch ($sort) {
         $orderSql = "ORDER BY p.created_at DESC";
         $sort = 'date_desc';
 }
+
+$sql = "SELECT p.*, u.full_name FROM posts p JOIN users u ON u.id = p.user_id $whereSql $orderSql";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+
+$posts = $stmt->fetchAll();
+
+// Filter option lists
+$locations = $pdo->query("SELECT DISTINCT location FROM posts WHERE location <> '' ORDER BY location")->fetchAll(PDO::FETCH_COLUMN);
+
+$allSkills = [];
+
+foreach ($pdo->query("SELECT required_skills FROM posts")->fetchAll(PDO::FETCH_COLUMN) as $rs) {
+    foreach (skills_to_array($rs) as $s) {
+        $allSkills[$s] = true;
+    }
+}
+
+$skillOptions = array_keys($allSkills);
+sort($skillOptions);
+
+$page_title = 'Browse collaborations';
+require __DIR__ . '/includes/header.php';
+?>
+
+<div class="page-head">
+    <div class="container">
+        <h1>Browse collaborations</h1>
+        <p class="muted">Find local projects that match your skills and interests.</p>
+    </div>
+</div>
