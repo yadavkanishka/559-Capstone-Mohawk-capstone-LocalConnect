@@ -1,8 +1,4 @@
 <?php
-<<<<<<< HEAD
-// LocalConnect - 
-// Authentication & role-based access helpers
-
 =======
 // LocalConnect - Authentication & role-based access helpers
 >>>>>>> Registration-W2
@@ -47,8 +43,6 @@ function require_login()
         flash('error', 'Please log in to continue.');
         redirect('/login.php');
     }
-<<<<<<< HEAD
-=======
 }
 
 function require_admin()
@@ -105,5 +99,4 @@ function pending_request_count()
     $stmt->execute([$u['id']]);
 
     return (int)$stmt->fetchColumn();
->>>>>>> Registration-W2
 }
