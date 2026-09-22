@@ -1,7 +1,5 @@
 <?php
-=======
 // LocalConnect - Authentication & role-based access helpers
->>>>>>> Registration-W2
 
 function current_user()
 {
