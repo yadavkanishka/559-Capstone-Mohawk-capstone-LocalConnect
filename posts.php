@@ -72,3 +72,45 @@ require __DIR__ . '/includes/header.php';
         <p class="muted">Find local projects that match your skills and interests.</p>
     </div>
 </div>
+
+<div class="container">
+    <form method="GET" action="/posts.php" class="card card-pad toolbar mb-3" data-testid="search-toolbar">
+    <div class="form-group">
+    <label for="q">Search</label>
+    <input type="search" id="q" name="q" placeholder="Title or keyword" value="<?= e($q) ?>" data-testid="search-input">
+</div>
+
+<div class="form-group">
+    <label for="location">Location</label>
+    <select id="location" name="location" data-testid="filter-location-select">
+        <option value="">All locations</option>
+        <?php foreach ($locations as $loc): ?>
+            <option value="<?= e($loc) ?>" <?= $loc === $location ? 'selected' : '' ?>><?= e($loc) ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="skill">Skill</label>
+    <select id="skill" name="skill" data-testid="filter-skill-select">
+        <option value="">All skills</option>
+        <?php foreach ($skillOptions as $s): ?>
+            <option value="<?= e($s) ?>" <?= $s === $skill ? 'selected' : '' ?>><?= e($s) ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="sort">Sort</label>
+    <select id="sort" name="sort" data-testid="sort-select">
+        <option value="date_desc" <?= $sort === 'date_desc' ? 'selected' : '' ?>>Newest first</option>
+        <option value="date_asc" <?= $sort === 'date_asc' ? 'selected' : '' ?>>Oldest first</option>
+        <option value="location" <?= $sort === 'location' ? 'selected' : '' ?>>By location</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <button type="submit" class="btn btn-primary" data-testid="search-apply-button">Apply</button>
+</div>
+
+</form>
