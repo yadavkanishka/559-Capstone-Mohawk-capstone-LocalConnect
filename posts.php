@@ -9,3 +9,20 @@ $sort = $_GET['sort'] ?? 'date_desc';
 
 $where = [];
 $params = [];
+if ($q !== '') {
+    $where[] = "(p.title LIKE ? OR p.description LIKE ?)";
+    $params[] = "%$q%";
+    $params[] = "%$q%";
+}
+
+if ($location !== '') {
+    $where[] = "p.location = ?";
+    $params[] = $location;
+}
+
+if ($skill !== '') {
+    $where[] = "p.required_skills LIKE ?";
+    $params[] = "%$skill%";
+}
+
+$whereSql = $where ? ('WHERE ' . implode(' AND ', $where)) : '';
