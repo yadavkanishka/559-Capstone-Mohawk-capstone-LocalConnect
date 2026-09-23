@@ -1,0 +1,24 @@
+{
+  "name": "559-capstone-mohawk-capstone-localconnect",
+  "version": "1.0.0",
+  "description": "** Day1 \r - Project setup \r - Set up GitHub repository and project folder structure.\r - Configured local development environment using MAMP (Apache + MySQL + PHP).\r - Connected project folder inside MAMP's htdocs directory for local testing with my github desktop .",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadavkanishka/559-Capstone-Mohawk-capstone-LocalConnect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yadavkanishka/559-Capstone-Mohawk-capstone-LocalConnect/issues"
+  },
+  "homepage": "https://github.com/yadavkanishka/559-Capstone-Mohawk-capstone-LocalConnect#readme",
+  "devDependencies": {
+    "cypress": "^16.1.0",
+    "jest": "^30.5.2"
+  }
+}

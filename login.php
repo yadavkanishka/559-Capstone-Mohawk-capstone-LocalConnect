@@ -46,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['full_name'] = $user['full_name'];
                 $_SESSION['role'] = $user['role'];
 
-                $message = "Login successful!";
+                header('Location: dashboard.php');
+                exit;
             } else {
                 $message = "Invalid email or password.";
             }

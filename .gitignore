@@ -1,0 +1,10 @@
+# Node.js
+node_modules/
+
+# Local database initialization marker
+.db_initialized
+
+# Cypress
+cypress/downloads/
+cypress/screenshots/
+cypress/videos/
