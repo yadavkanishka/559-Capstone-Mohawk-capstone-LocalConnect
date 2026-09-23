@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/yadavkanishka/559-Capstone-Mohawk-capstone-LocalConnect#readme",
   "devDependencies": {
+    "cypress": "^16.1.0",
     "jest": "^30.5.2"
   }
 }
