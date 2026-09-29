@@ -19,15 +19,32 @@ if (!isset($page_title)) {
             background: #f5f7fa;
             color: #222;
         }
+         
+        .logo {
+            font-size: 23px;
+            font-weight: 700;
+            color: #111827;
+            text-decoration: none;
+            margin-right: 12px;
+            white-space: nowrap;
+        }
 
+        .logo:hover {
+            color: #111827;
+        }
         nav {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            flex: 1; 
             background: #ffffff;
             border-bottom: 1px solid #ddd;
             padding: 15px 30px;
         }
+        
 
         nav a {
-            margin-right: 20px;
+            margin-right: 40px;
             text-decoration: none;
             color: #333;
         }
@@ -150,8 +167,7 @@ if (!isset($page_title)) {
 <body>
 
 <nav>
-    <strong>LocalConnect</strong>
-
+    <a href="/" class="logo">LocalConnect</a>
     <a href="/index.php">Home</a>
     <a href="/posts.php">Collaborations</a>
 
