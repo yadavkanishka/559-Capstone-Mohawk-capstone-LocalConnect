@@ -55,4 +55,31 @@ function validateRegistration($email, $password, $full_name) {
     return $errors;
 
 }
+function validateProfile($full_name, $location, $skills, $interests, $biography) {
+    $errors = [];
+
+    if ($full_name === '') {
+        $errors[] = "Full name is required.";
+    } elseif (strlen($full_name) > 150) {
+        $errors[] = "Full name must be 150 characters or less.";
+    }
+
+    if (strlen($location) > 100) {
+        $errors[] = "Location must be 100 characters or less.";
+    }
+
+    if (strlen($skills) > 2000) {
+        $errors[] = "Skills must be 2000 characters or less.";
+    }
+
+    if (strlen($interests) > 2000) {
+        $errors[] = "Interests must be 2000 characters or less.";
+    }
+
+    if (strlen($biography) > 5000) {
+        $errors[] = "Biography must be 5000 characters or less.";
+    }
+
+    return $errors;
+}
 ?>
