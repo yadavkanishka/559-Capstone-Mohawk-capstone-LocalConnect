@@ -8,25 +8,34 @@ require_login();
 $user = current_user();
 
 $page_title = 'Dashboard';
+require __DIR__ . '/includes/header.php';
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>LocalConnect Dashboard</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+<div class="page-head">
+    <div class="container">
+        <h1>Dashboard</h1>
+        <p class="text-muted">Welcome back to LocalConnect.</p>
+    </div>
+</div>
 
-<body>
+<div class="container">
+    <?php if ($user): ?>
+        <section class="card">
+            <h2>Welcome, <?= htmlspecialchars($user['full_name']) ?>!</h2>
 
-<h1>LocalConnect Dashboard</h1>
+            <p class="text-muted">
+                You are successfully logged in.
+            </p>
 
-<?php if ($user): ?>
-    <p>Welcome, <?php echo htmlspecialchars($user['full_name']); ?>!</p>
-    <p>You are successfully logged in.</p>
-<?php endif; ?>
+            <div class="mt-2">
+                <a href="/posts.php" class="btn btn-primary">
+                    Browse Collaborations
+                </a>
 
-<a href="logout.php">Logout</a>
-
-</body>
-</html>
+                <a href="/logout.php" class="btn btn-outline">
+                    Logout
+                </a>
+            </div>
+        </section>
+    <?php endif; ?>
+</div>
