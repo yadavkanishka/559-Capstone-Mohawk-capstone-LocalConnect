@@ -2,10 +2,9 @@
    LocalConnect - UI Foundation
    ========================================= */
 
-/* ---------- Design Tokens ---------- */
 
 :root {
-    --color-bg: #FAFAF8;
+    --color-bg: hsl(60, 17%, 98%);
     --color-surface: #FFFFFF;
     --color-surface-secondary: #F4F4F0;
 
