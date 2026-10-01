@@ -67,19 +67,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
+$page_title = 'Create an Account';
+require __DIR__ . '/includes/header.php';
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>LocalConnect Registration</title>
-</head>
+<div class="container">
+    <div class="page-head">
+        <h1>Create an Account</h1>
+    </div>
 
-<body>
+    <section class="card">
+        <form method="POST">
 
-<h1>Create an Account</h1>
-
-<form method="POST">
     <?= csrf_field() ?>
 
     <label>Email:</label>
@@ -106,6 +106,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php if (!empty($message)): ?>
     <p><?php echo htmlspecialchars($message); ?></p>
 <?php endif; ?>
-
-</body>
-</html>
+</section>
+</div>
