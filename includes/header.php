@@ -146,7 +146,39 @@ if (!isset($page_title)) {
         .post-card h3 {
             margin-top: 0;
         }
+        .post-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
 
+        .post-actions .btn {
+            padding: 8px 14px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+
+        .post-actions .edit-btn {
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+        }
+
+        .post-actions .edit-btn:hover {
+            background: #dbeafe;
+        }
+
+        .post-actions .delete-btn {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .post-actions .delete-btn:hover {
+            background: #fee2e2;
+        }
         .empty {
             background: white;
             padding: 40px;
