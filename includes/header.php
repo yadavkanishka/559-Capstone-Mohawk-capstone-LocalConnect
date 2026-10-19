@@ -9,206 +9,37 @@ if (!isset($page_title)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="/559-Capstone-Mohawk-capstone-LocalConnect/css/style.css">
     <title><?= e($page_title) ?> - LocalConnect</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f7fa;
-            color: #222;
-        }
-         
-        .logo {
-            font-size: 23px;
-            font-weight: 700;
-            color: #111827;
-            text-decoration: none;
-            margin-right: 12px;
-            white-space: nowrap;
-        }
-
-        .logo:hover {
-            color: #111827;
-        }
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 34px;
-            flex: 1; 
-            background: #ffffff;
-            border-bottom: 1px solid #ddd;
-            padding: 15px 30px;
-        }
-        
-
-        nav a {
-            margin-right: 40px;
-            text-decoration: none;
-            color: #333;
-        }
-
-        nav a:hover {
-            color: #2563eb;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 25px;
-        }
-
-        .page-head {
-            background: #ffffff;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .card {
-            background: #ffffff;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        .card-pad {
-            padding: 20px;
-        }
-
-        .mb-2 {
-            margin-bottom: 15px;
-        }
-
-        .mb-3 {
-            margin-bottom: 25px;
-        }
-
-        .mt-2 {
-            margin-top: 15px;
-        }
-
-        .muted {
-            color: #666;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-
-        input,
-        textarea,
-        select {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 18px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            text-decoration: none;
-            cursor: pointer;
-            background: white;
-            color: #222;
-        }
-
-        .btn-primary {
-            background: #2563eb;
-            color: white;
-            border-color: #2563eb;
-        }
-
-        .feed-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .post-card {
-            padding: 20px;
-        }
-
-        .post-card h3 {
-            margin-top: 0;
-        }
-        .post-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 18px;
-            padding-top: 15px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .post-actions .btn {
-            padding: 8px 14px;
-            font-size: 14px;
-            border-radius: 6px;
-        }
-
-        .post-actions .edit-btn {
-            background: #eff6ff;
-            color: #2563eb;
-            border: 1px solid #bfdbfe;
-        }
-
-        .post-actions .edit-btn:hover {
-            background: #dbeafe;
-        }
-
-        .post-actions .delete-btn {
-            background: #fef2f2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
-        }
-
-        .post-actions .delete-btn:hover {
-            background: #fee2e2;
-        }
-        .empty {
-            background: white;
-            padding: 40px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        footer {
-            margin-top: 40px;
-            padding: 25px;
-            text-align: center;
-            color: #666;
-        }
+   
     </style>
 </head>
 
 <body>
 
-<nav>
-    <a href="/" class="logo">LocalConnect</a>
-    <a href="/index.php">Home</a>
-    <a href="/posts.php">Collaborations</a>
 
-    <?php if (is_logged_in()): ?>
-        <a href="/profile.php">My Profile</a>
-        <a href="/post-create.php">Create Post</a>
-        <a href="/dashboard.php">Dashboard</a>
-    <?php else: ?>
-        <a href="/login.php">Login</a>
-        <a href="/register.php">Register</a>
-    <?php endif; ?>
+<nav class="navbar">
+    <div class="container">
+        <a href="/559-Capstone-Mohawk-capstone-LocalConnect/index.php" class="brand">
+            <span class="dot">L</span>
+            LocalConnect
+        </a>
+
+        <div class="nav-links">
+            <a class="nav-link" href="/559-Capstone-Mohawk-capstone-LocalConnect/index.php">Home</a>
+            <a class="nav-link" href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php">Collaborations</a>
+
+            <?php if (is_logged_in()): ?>
+                <a class="nav-link" href="/559-Capstone-Mohawk-capstone-LocalConnect/profile.php">My Profile</a>
+                <a class="nav-link" href="/559-Capstone-Mohawk-capstone-LocalConnect/post-create.php">Create Post</a>
+                <a class="nav-link" href="/559-Capstone-Mohawk-capstone-LocalConnect/dashboard.php">Dashboard</a>
+            <?php else: ?>
+                <a class="nav-link" href="/559-Capstone-Mohawk-capstone-LocalConnect/login.php">Login</a>
+                <a class="nav-link" href="/559-Capstone-Mohawk-capstone-LocalConnect/register.php">Register</a>
+            <?php endif; ?>
+        </div>
+    </div>
 </nav>
+
+
