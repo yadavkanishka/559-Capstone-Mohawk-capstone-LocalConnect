@@ -553,131 +553,6 @@ a {
     gap: 22px;
 }
 
-.post-card {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    height: 100%;
-    padding: 24px;
-    overflow-wrap: anywhere;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: white;
-    box-shadow: var(--shadow);
-    transition:
-        transform 220ms ease,
-        box-shadow 220ms ease,
-        border-color 220ms ease;
-}
-
-.post-card:hover {
-    transform: translateY(-4px);
-    border-color: #D7CAF9;
-    box-shadow: var(--shadow-hover);
-}
-
-.post-card h3 {
-    margin-bottom: 12px;
-    font-size: 1.12rem;
-    line-height: 1.45;
-}
-
-.post-card h3 a {
-    color: var(--text);
-}
-
-.post-card h3 a:hover {
-    color: var(--primary);
-}
-
-.post-card p {
-    margin-bottom: 13px;
-    color: #625F70;
-    font-size: 0.94rem;
-    line-height: 1.7;
-}
-
-.post-card strong {
-    color: var(--text);
-}
-
-.post-card .muted {
-    color: var(--muted);
-}
-
-.skill-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin: 8px 0 14px;
-}
-
-/* Use these when skill tags are wrapped in spans */
-.skill-list span {
-    padding: 5px 10px;
-    border: 1px solid #E4DAFF;
-    border-radius: 99px;
-    background: #F5F0FF;
-    color: #6548B0;
-    font-size: 0.78rem;
-    font-weight: 700;
-}
-
-.post-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: auto;
-    padding-top: 15px;
-    border-top: 1px solid var(--border);
-}
-
-.post-meta .name {
-    font-size: 0.9rem;
-    font-weight: 700;
-}
-
-.post-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 18px;
-    padding-top: 15px;
-    border-top: 1px solid var(--border);
-}
-
-.post-actions .btn {
-    padding: 8px 13px;
-    font-size: 0.85rem;
-}
-
-.post-actions .edit-btn {
-    border-color: #D8E5FF;
-    background: #EFF5FF;
-    color: #315EAD;
-}
-
-.post-actions .edit-btn:hover {
-    background: #DFEAFF;
-}
-
-.post-actions .delete-btn {
-    border-color: #F6D5D5;
-    background: #FFF1F1;
-    color: var(--danger);
-}
-
-.post-actions .delete-btn:hover {
-    background: #FFE2E2;
-}
-
-.line-clamp {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-}
 
 /* 10. Forms */
 .form-group {
@@ -695,12 +570,14 @@ label {
 input,
 textarea,
 select {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     padding: 12px 14px;
     border: 1px solid #DED9E9;
     border-radius: var(--radius-sm);
     background: white;
     color: var(--text);
+    font: inherit;
     transition:
         border-color var(--transition),
         box-shadow var(--transition);
@@ -1140,3 +1017,231 @@ footer p {
         transform: none;
     }
 }
+
+
+/* ===== LOGIN PAGE ===== */
+
+.login-page {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    background: #FAF9FC;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 600px;
+    padding: 38px 42px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #E9E5F0;
+    border-radius: 26px;
+    box-shadow: 0 12px 32px rgba(56, 43, 85, 0.07);
+}
+
+.login-card h1 {
+    margin: 0 0 12px;
+    font-size: 2rem;
+}
+
+.login-subtitle {
+    margin-bottom: 30px;
+    color: #777488;
+    font-size: 1.15rem;
+}
+
+.login-card .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 26px;
+}
+
+.login-card .form-group label {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+}
+
+.login-card .form-group input {
+    width: 100%;
+    min-height: 76px;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    border: 1px solid #DDD9E8;
+    border-radius: 17px;
+    background: #EAF1FF;
+    font-size: 1.1rem;
+}
+
+.login-card .form-group input:focus {
+    border-color: #8060D0;
+    box-shadow: 0 0 0 4px rgba(114, 84, 200, 0.13);
+}
+
+.login-card .btn-primary {
+    min-height: 66px;
+    padding: 14px 30px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+}
+
+.login-signup {
+    margin: 8px 0 0;
+    color: #777488;
+    font-size: 1.05rem;
+}
+
+.login-signup a {
+    color: #7254C8;
+}
+
+@media (max-width: 600px) {
+    .login-page {
+        min-height: auto;
+        padding: 30px 14px;
+    }
+
+    .login-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+    }
+
+    .login-card h1 {
+        font-size: 1.7rem;
+    }
+
+    .login-card .form-group input {
+        min-height: 60px;
+    }
+}
+
+/* =========================================
+   REGISTRATION PAGE
+========================================= */
+
+.register-page {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    background: #FAF9FC;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 600px;
+    padding: 38px 42px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #E9E5F0;
+    border-radius: 26px;
+    box-shadow: 0 12px 32px rgba(56, 43, 85, 0.07);
+}
+
+.register-card h1 {
+    margin: 0 0 12px;
+    color: #28243A;
+    font-size: 2rem;
+}
+
+.register-subtitle {
+    margin: 0 0 28px;
+    color: #777488;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.register-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.register-form-group label {
+    margin: 0;
+    color: #302B40;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.register-form-group input {
+    width: 100%;
+    min-height: 58px;
+    padding: 14px 17px;
+    box-sizing: border-box;
+    border: 1px solid #DDD9E8;
+    border-radius: 13px;
+    background: #EAF1FF;
+    color: #28243A;
+    font: inherit;
+}
+
+.register-form-group input:focus {
+    outline: none;
+    border-color: #8060D0;
+    box-shadow: 0 0 0 4px rgba(114, 84, 200, 0.13);
+}
+
+.password-help {
+    color: #777488;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.optional-label {
+    color: #898497;
+    font-size: 0.82rem;
+    font-weight: 400;
+}
+
+.register-submit {
+    width: 100%;
+    min-height: 58px;
+    margin-top: 4px;
+    border-radius: 13px;
+    font-size: 1rem;
+}
+
+.register-login {
+    margin: 22px 0 0;
+    color: #777488;
+    text-align: center;
+}
+
+.register-login a {
+    color: #7254C8;
+    font-weight: 700;
+}
+
+.register-error {
+    margin: 0 0 22px;
+    padding: 13px 15px;
+    color: #A43F50;
+    background: #FFF0F1;
+    border: 1px solid #F4D9DD;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .register-page {
+        min-height: auto;
+        padding: 28px 14px;
+    }
+
+    .register-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+    }
+
+    .register-card h1 {
+        font-size: 1.7rem;
+    }
+}
+

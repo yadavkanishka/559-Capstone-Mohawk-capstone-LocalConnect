@@ -12,8 +12,6 @@ if (!isset($page_title)) {
     <link rel="stylesheet" href="/559-Capstone-Mohawk-capstone-LocalConnect/css/style.css">
     <title><?= e($page_title) ?> - LocalConnect</title>
 
-   
-    </style>
 </head>
 
 <body>
