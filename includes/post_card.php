@@ -41,10 +41,17 @@
                 <?= e(initials($p['full_name'])) ?>
             </span>
 
+            
             <div class="creator-info">
                 <span class="creator-label">Posted by</span>
-                <span class="creator-name"><?= e($p['full_name']) ?></span>
+                <a
+                    class="creator-name creator-profile-link"
+                    href="/559-Capstone-Mohawk-capstone-LocalConnect/user-profile.php?id=<?= (int) $p['user_id'] ?>"
+                >
+                    <?= e($p['full_name']) ?>
+                </a>
             </div>
+
         </div>
 
         <?php if (is_logged_in() && current_user()['id'] == $p['user_id']): ?>
