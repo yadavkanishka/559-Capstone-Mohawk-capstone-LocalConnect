@@ -61,6 +61,13 @@ require_once __DIR__ . '/includes/header.php';
             >
                 My Profile
             </a>
+            
+            <form method="POST"
+                action="/559-Capstone-Mohawk-capstone-LocalConnect/logout.php">
+                <?= csrf_field() ?>
+                <button type="submit" class="btn">Log Out</button>
+            </form>
+
         </div>
     </section>
 

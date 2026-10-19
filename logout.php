@@ -1,7 +1,19 @@
 
 <?php
 require_once __DIR__ . '/config/config.php';
-
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Allow: POST');
+    http_response_code(405);
+    exit('Method not allowed.');
+}
+if (
+    !isset($_POST['csrf'], $_SESSION['csrf']) ||
+    !is_string($_POST['csrf']) ||
+    !hash_equals($_SESSION['csrf'], $_POST['csrf'])
+) {
+    http_response_code(403);
+    exit('Invalid security token. Please refresh the page and try again.');
+}
 // Clear the session data.
 $_SESSION = [];
 
