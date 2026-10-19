@@ -2,6 +2,8 @@
 session_start();
 
 require_once 'config/db.php';
+require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/auth.php';
 
 $message = "";
 
@@ -57,33 +59,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
+
+
+$page_title = 'Login';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>LocalConnect Login</title>
-</head>
 
-<body>
+<main class="login-page">
+    <div class="login-card">
 
-<h1>Login</h1>
+        <h1>Welcome Back</h1>
 
-<form method="POST">
+        <p class="login-subtitle">
+            Log in to connect with your local community.
+        </p>
 
-    <label>Email:</label>
-    <input type="email" name="email" required>
-    <br><br>
+        <?php if (!empty($message)): ?>
+            <p class="form-error" role="alert">
+                <?= e($message) ?>
+            </p>
+        <?php endif; ?>
 
-    <label>Password:</label>
-    <input type="password" name="password" required>
-    <br><br>
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                >
+            </div>
 
-    <button type="submit">Login</button>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="current-password"
+                    required
+                >
+            </div>
 
-</form>
-<?php if (!empty($message)): ?>
-    <p><?php echo htmlspecialchars($message); ?></p>
-<?php endif; ?>
-</body>
-</html>
+            <button type="submit" class="btn btn-primary">
+                Login
+            </button>
+        </form>
+
+        <p class="login-signup">
+            Don't have an account?
+            <a href="/559-Capstone-Mohawk-capstone-LocalConnect/register.php">
+                Create an account
+            </a>
+        </p>
+
+    </div>
+</main>
+
+
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

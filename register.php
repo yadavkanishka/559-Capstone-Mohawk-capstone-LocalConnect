@@ -69,43 +69,96 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>LocalConnect Registration</title>
-</head>
 
-<body>
 
-<h1>Create an Account</h1>
 
-<form method="POST">
-    <?= csrf_field() ?>
+<?php
+$page_title = 'Create Account';
+require_once __DIR__ . '/includes/header.php';
+?>
 
-    <label>Email:</label>
-    <input type="email" name="email" required>
-    <br><br>
+<main class="register-page">
+    <section class="register-card">
+        <h1>Create an Account</h1>
+        <p class="register-subtitle">
+            Join your local community and start collaborating.
+        </p>
 
-    <label>Password:</label>
-    <input type="password" name="password" required>
-    <br><br>
+        <?php if (!empty($message)): ?>
+            <p class="register-error" role="alert">
+                <?= e($message) ?>
+            </p>
+        <?php endif; ?>
 
-    <label>Full Name:</label>
-    <input type="text" name="full_name" required>
-    <br><br>
+        <form method="POST" action="">
+            <?= csrf_field() ?>
 
-    <label>Location:</label>
-    <input type="text" name="location" placeholder="e.g. Toronto, ON">
-    <br><br>
-    
+            <div class="register-form-group">
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    value="<?= e($_POST['email'] ?? '') ?>"
+                    required
+                >
+            </div>
 
-    <button type="submit">Register</button>
+            <div class="register-form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="new-password"
+                    required
+                >
+                <small class="password-help">
+                    At least 8 characters, including uppercase and lowercase
+                    letters, a number, and a special character.
+                </small>
+            </div>
 
-</form>
+            <div class="register-form-group">
+                <label for="full_name">Full Name</label>
+                <input
+                    type="text"
+                    id="full_name"
+                    name="full_name"
+                    autocomplete="name"
+                    value="<?= e($_POST['full_name'] ?? '') ?>"
+                    required
+                >
+            </div>
 
-<?php if (!empty($message)): ?>
-    <p><?php echo htmlspecialchars($message); ?></p>
-<?php endif; ?>
+            <div class="register-form-group">
+                <label for="location">
+                    Location <span class="optional-label">(optional)</span>
+                </label>
+                <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    placeholder="e.g. Toronto, ON"
+                    autocomplete="address-level2"
+                    value="<?= e($_POST['location'] ?? '') ?>"
+                >
+            </div>
 
-</body>
-</html>
+            <button type="submit" class="btn btn-primary register-submit">
+                Create Account
+            </button>
+        </form>
+
+        <p class="register-login">
+            Already have an account?
+            <a href="/559-Capstone-Mohawk-capstone-LocalConnect/login.php">
+                Log in
+            </a>
+        </p>
+    </section>
+</main>
+
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
+
