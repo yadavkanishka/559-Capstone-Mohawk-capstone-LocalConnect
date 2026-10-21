@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $user = ['id' => $conn->lastInsertId()];
                 login_user($user);
-                redirect('/posts.php');
+                redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
             }
 
         } catch (PDOException $e) {
