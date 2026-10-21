@@ -162,7 +162,7 @@ $page_title = 'Find your people, locally';
             <h2>Latest collaborations</h2>
 
             <a
-                href="/posts.php"
+                href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php"
                 class="btn btn-ghost btn-sm"
             >View all &rarr;</a>
 
