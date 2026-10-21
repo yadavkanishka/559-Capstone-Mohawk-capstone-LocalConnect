@@ -42,12 +42,6 @@
 - Added edit post (post-edit.php) and delete post (post-delete.php).
 - Users can only edit or delete their own posts, and logged-out users cannot create posts.
 
-**Search, Filter & Sort
-- Added keyword search on post title and description.
-- Added filters for location and skill.
-- Added sorting by newest, oldest or location.
-- Added a "no results" message when nothing matches.
-
 **Dashboard & Navigation
 - Dashboard now shows the user's post count and their 5 latest posts.
 - Home page shows the 3 latest posts.
