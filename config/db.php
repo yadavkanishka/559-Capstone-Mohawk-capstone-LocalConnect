@@ -1,10 +1,11 @@
 
 
 <?php
-$host = "127.0.0.1:8889"; // MAMP MySQL default port
-$db_name = "localconnect";
-$username = "root";
-$password = "root"; // default MAMP password
+$host = getenv('DB_HOST') ?: '127.0.0.1';
+$db_name = getenv('DB_NAME') ?: 'localconnect';
+$username = getenv('DB_USER') ?: 'root';
+$password = getenv('DB_PASSWORD') ?: '';
+$port = getenv('DB_PORT') ?: '3306';
 
 function getDBConnection() {
     global $host, $db_name, $username, $password;
