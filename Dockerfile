@@ -1,8 +1,10 @@
 
-
 FROM php:8.2-apache
 
 RUN docker-php-ext-install pdo pdo_mysql mysqli
+
+# Allow Apache/PHP to read Render secret files
+RUN usermod -a -G 1000 www-data
 
 RUN a2enmod rewrite
 
