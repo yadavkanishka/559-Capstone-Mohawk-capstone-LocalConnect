@@ -4,7 +4,8 @@ FROM php:8.2-apache
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 # Allow Apache/PHP to read Render secret files
-RUN usermod -a -G 1000 www-data
+RUN groupadd -g 1000 render-secrets \
+    && usermod -a -G render-secrets www-data
 
 RUN a2enmod rewrite
 
