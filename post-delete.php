@@ -6,7 +6,7 @@ require_login();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     flash('error', 'Invalid request.');
-    redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+    redirect('/posts.php');
 }
 
 verify_csrf();
@@ -15,7 +15,7 @@ $post_id = filter_input(INPUT_POST, 'post_id', FILTER_VALIDATE_INT);
 
 if (!$post_id) {
     flash('error', 'Invalid post.');
-    redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+    redirect('/posts.php');
 }
 
 $pdo = getDBConnection();
@@ -36,9 +36,9 @@ $stmt->execute([
 
 if ($stmt->rowCount() === 0) {
     flash('error', 'Post not found or you do not have permission to delete it.');
-    redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+    redirect('/posts.php');
 }
 
 flash('success', 'Post deleted successfully.');
 
-redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+redirect('/posts.php');

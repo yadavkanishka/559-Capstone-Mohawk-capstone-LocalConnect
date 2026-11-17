@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 ':location' => $location
             ]);
 
-            redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+            redirect('/posts.php');
 
         } catch (PDOException $e) {
 
@@ -184,7 +184,7 @@ require __DIR__ . '/includes/header.php';
             </button>
 
             <a
-                href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php"
+                href="/posts.php"
                 class="btn"
             >
                 Cancel

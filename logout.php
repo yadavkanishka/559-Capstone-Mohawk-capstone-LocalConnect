@@ -36,5 +36,5 @@ if (ini_get('session.use_cookies')) {
 session_destroy();
 
 // Redirect to the LocalConnect homepage.
-header('Location: /559-Capstone-Mohawk-capstone-LocalConnect/index.php');
+header('Location: /index.php');
 exit;

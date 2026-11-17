@@ -10,7 +10,7 @@ $post_id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if (!$post_id) {
     flash('error', 'Invalid post.');
-    redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+    redirect('/posts.php');
 }
 
 /*
@@ -27,7 +27,7 @@ $post = $stmt->fetch();
 
 if (!$post) {
     flash('error', 'Post not found.');
-    redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+    redirect('/posts.php');
 }
 
 /*
@@ -35,7 +35,7 @@ if (!$post) {
  */
 if ((int)$post['user_id'] !== (int)current_user()['id']) {
     flash('error', 'You can only edit your own posts.');
-    redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+    redirect('/posts.php');
 }
 
 /*
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         flash('success', 'Post updated successfully.');
 
-        redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+        redirect('/posts.php');
     }
 
     /*
@@ -218,7 +218,7 @@ require_once __DIR__ . '/includes/header.php';
             </button>
 
             <a
-                href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php"
+                href="/posts.php"
                 class="btn"
             >
                 Cancel

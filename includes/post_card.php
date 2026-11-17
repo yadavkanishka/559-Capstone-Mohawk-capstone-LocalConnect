@@ -46,7 +46,7 @@
                 <span class="creator-label">Posted by</span>
                 <a
                     class="creator-name creator-profile-link"
-                    href="/559-Capstone-Mohawk-capstone-LocalConnect/user-profile.php?id=<?= (int) $p['user_id'] ?>"
+                    href="/user-profile.php?id=<?= (int) $p['user_id'] ?>"
                 >
                     <?= e($p['full_name']) ?>
                 </a>
@@ -57,7 +57,7 @@
         <?php if (is_logged_in() && current_user()['id'] == $p['user_id']): ?>
             <div class="post-actions">
                 <a
-                    href="/559-Capstone-Mohawk-capstone-LocalConnect/post-edit.php?id=<?= (int)$p['id'] ?>"
+                    href="/post-edit.php?id=<?= (int)$p['id'] ?>"
                     class="edit-btn btn"
                 >
                     Edit
@@ -65,7 +65,7 @@
 
                 <form
                     method="POST"
-                    action="/559-Capstone-Mohawk-capstone-LocalConnect/post-delete.php"
+                    action="/post-delete.php"
                     class="post-delete-form"
                 >
                     <?= csrf_field() ?>

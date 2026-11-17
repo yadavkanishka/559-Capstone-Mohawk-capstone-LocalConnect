@@ -39,7 +39,7 @@ function require_login()
 {
     if (!is_logged_in()) {
         flash('error', 'Please log in to continue.');
-        redirect('/559-Capstone-Mohawk-capstone-LocalConnect/login.php');
+        redirect('/login.php');
     }
 }
 

@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $user = ['id' => $conn->lastInsertId()];
                 login_user($user);
-                redirect('/559-Capstone-Mohawk-capstone-LocalConnect/posts.php');
+                redirect('/posts.php');
             }
 
         } catch (PDOException $e) {
@@ -153,7 +153,7 @@ require_once __DIR__ . '/includes/header.php';
 
         <p class="register-login">
             Already have an account?
-            <a href="/559-Capstone-Mohawk-capstone-LocalConnect/login.php">
+            <a href="/login.php">
                 Log in
             </a>
         </p>

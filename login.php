@@ -112,7 +112,7 @@ require_once __DIR__ . '/includes/header.php';
 
         <p class="login-signup">
             Don't have an account?
-            <a href="/559-Capstone-Mohawk-capstone-LocalConnect/register.php">
+            <a href="/register.php">
                 Create an account
             </a>
         </p>

@@ -45,13 +45,13 @@ $page_title = 'Find your people, locally';
                 <?php if (is_logged_in()): ?>
 
                     <a
-                        href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php"
+                        href="/posts.php"
                         class="btn btn-primary"
                         data-testid="hero-browse-button"
                     >Browse posts</a>
 
                     <a
-                        href="/559-Capstone-Mohawk-capstone-LocalConnect/post-create.php"
+                        href="/post-create.php"
                         class="btn btn-outline"
                         data-testid="hero-create-button"
                     >Post a collaboration</a>
@@ -59,13 +59,13 @@ $page_title = 'Find your people, locally';
                 <?php else: ?>
 
                     <a
-                        href="/559-Capstone-Mohawk-capstone-LocalConnect/register.php"
+                        href="/register.php"
                         class="btn btn-primary"
                         data-testid="hero-register-button"
                     >Get started &mdash; it's free</a>
 
                     <a
-                        href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php"
+                        href="/posts.php"
                         class="btn btn-outline"
                         data-testid="hero-browse-button"
                     >Browse posts</a>
@@ -162,7 +162,7 @@ $page_title = 'Find your people, locally';
             <h2>Latest collaborations</h2>
 
             <a
-                href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php"
+                href="/posts.php"
                 class="btn btn-ghost btn-sm"
             >View all &rarr;</a>
 

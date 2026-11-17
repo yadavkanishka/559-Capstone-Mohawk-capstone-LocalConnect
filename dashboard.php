@@ -43,27 +43,27 @@ require_once __DIR__ . '/includes/header.php';
         <div class="dashboard-quick-actions">
             <a
                 class="btn btn-primary"
-                href="/559-Capstone-Mohawk-capstone-LocalConnect/post-create.php"
+                href="/post-create.php"
             >
                 Create a Post
             </a>
 
             <a
                 class="btn"
-                href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php"
+                href="/posts.php"
             >
                 Browse Collaborations
             </a>
 
             <a
                 class="btn"
-                href="/559-Capstone-Mohawk-capstone-LocalConnect/profile.php"
+                href="/profile.php"
             >
                 My Profile
             </a>
             
             <form method="POST"
-                action="/559-Capstone-Mohawk-capstone-LocalConnect/logout.php">
+                action="/logout.php">
                 <?= csrf_field() ?>
                 <button type="submit" class="btn">Log Out</button>
             </form>
@@ -75,7 +75,7 @@ require_once __DIR__ . '/includes/header.php';
         <article class="dashboard-summary-card">
             <h2>Your Posts</h2>
             <p class="dashboard-number"><?= $totalPosts ?></p>
-            <a href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php">
+            <a href="/posts.php">
                 Browse collaborations
             </a>
         </article>
@@ -83,7 +83,7 @@ require_once __DIR__ . '/includes/header.php';
         <article class="dashboard-summary-card">
             <h2>Your Profile</h2>
             <p>Keep your skills and interests up to date.</p>
-            <a href="/559-Capstone-Mohawk-capstone-LocalConnect/profile.php">
+            <a href="/profile.php">
                 View profile
             </a>
         </article>
@@ -97,7 +97,7 @@ require_once __DIR__ . '/includes/header.php';
                 <p>You haven't created any collaboration posts yet.</p>
                 <a
                     class="btn btn-primary"
-                    href="/559-Capstone-Mohawk-capstone-LocalConnect/post-create.php"
+                    href="/post-create.php"
                 >
                     Create your first post
                 </a>
@@ -117,7 +117,7 @@ require_once __DIR__ . '/includes/header.php';
                         <?php endif; ?>
 
                         <a
-                            href="/559-Capstone-Mohawk-capstone-LocalConnect/post-edit.php?id=<?= (int) $post['id'] ?>"
+                            href="/post-edit.php?id=<?= (int) $post['id'] ?>"
                         >
                             Manage post
                         </a>

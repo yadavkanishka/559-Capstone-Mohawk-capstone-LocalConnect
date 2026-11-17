@@ -52,7 +52,7 @@ require_once __DIR__ . '/includes/header.php';
             <h1>Profile not found</h1>
             <p>This profile may not exist or the link may be invalid.</p>
             <a class="btn btn-primary"
-               href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php">
+               href="/posts.php">
                 Browse Collaborations
             </a>
         </section>
@@ -159,13 +159,13 @@ require_once __DIR__ . '/includes/header.php';
 
             <div class="public-profile-actions">
                 <a class="btn"
-                   href="/559-Capstone-Mohawk-capstone-LocalConnect/posts.php">
+                   href="/posts.php">
                     Back to Collaborations
                 </a>
 
                 <?php if (is_logged_in() && (int) current_user()['id'] === (int) $profile['id']): ?>
                     <a class="btn btn-primary"
-                       href="/559-Capstone-Mohawk-capstone-LocalConnect/profile.php">
+                       href="/profile.php">
                         Edit My Profile
                     </a>
                 <?php endif; ?>
