@@ -14,21 +14,22 @@ function getDBConnection() {
     try {
         $dsn = "mysql:host=$host;port=$port;dbname=$db_name;charset=utf8mb4";
 
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        ];
+        if (!empty($ssl_ca)) {
+            if (!is_readable($ssl_ca)) {
+                throw new RuntimeException("SSL certificate is missing or unreadable.");
+            }
 
-        if ($ssl_ca) {
-            $options[PDO::MYSQL_ATTR_SSL_CA] = $ssl_ca;
-            $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = true;
+            $dsn .= ";sslmode=verify-ca;sslrootcert=$ssl_ca";
         }
 
-        $conn = new PDO($dsn, $username, $password, $options);
+        $conn = new PDO($dsn, $username, $password, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
 
         return $conn;
 
-    } catch (PDOException $e) {
-        error_log($e->getMessage());
+    } catch (Throwable $e) {
+        error_log("Database connection error: " . $e->getMessage());
         die("Database connection failed.");
     }
 }
