@@ -15,9 +15,14 @@ function getDBConnection() {
         $dsn = "mysql:host=$host;port=$port;dbname=$db_name;charset=utf8mb4";
 
         if (!empty($ssl_ca)) {
-            if (!is_readable($ssl_ca)) {
-                throw new RuntimeException("SSL certificate is missing or unreadable.");
-            }
+
+    error_log("CA path: " . $ssl_ca);
+    error_log("CA exists: " . (file_exists($ssl_ca) ? "YES" : "NO"));
+    error_log("CA readable: " . (is_readable($ssl_ca) ? "YES" : "NO"));
+
+    if (!is_readable($ssl_ca)) {
+        throw new RuntimeException("SSL certificate is missing or unreadable.");
+    }
 
             $dsn .= ";sslmode=verify-ca;sslrootcert=$ssl_ca";
         }
