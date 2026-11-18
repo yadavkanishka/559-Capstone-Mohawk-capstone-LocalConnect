@@ -1,6 +1,4 @@
-
 <?php
-
 $host = getenv('DB_HOST') ?: '127.0.0.1';
 $db_name = getenv('DB_NAME') ?: 'localconnect';
 $username = getenv('DB_USER') ?: 'root';
@@ -39,4 +37,3 @@ function getDBConnection() {
     }
 }
 
-?>
