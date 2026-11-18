@@ -1,7 +1,7 @@
 describe('LocalConnect Profile', () => {
 
     beforeEach(() => {
-        cy.visit('http://localhost/559-Capstone-Mohawk-capstone-LocalConnect/login.php');
+        cy.visit('http://localhost/login.php');
 
         cy.get('input[name="email"]').type('User3@example.com');
         cy.get('input[name="password"]').type('Testing@12');
@@ -12,7 +12,7 @@ describe('LocalConnect Profile', () => {
     });
 
     it('TC-P1 - User can open their profile', () => {
-        cy.visit('http://localhost/559-Capstone-Mohawk-capstone-LocalConnect/profile.php');
+        cy.visit('http://localhost/profile.php');
 
         cy.contains('My Profile').should('be.visible');
 
@@ -28,7 +28,7 @@ describe('LocalConnect Profile', () => {
     });
 
     it('TC-P2 - User can update and save their profile', () => {
-        cy.visit('http://localhost/559-Capstone-Mohawk-capstone-LocalConnect/profile.php');
+        cy.visit('http://localhost/profile.php');
 
         // Open the edit form
         cy.contains('button', 'Edit Profile').should('be.visible').click();
@@ -67,7 +67,7 @@ describe('LocalConnect Profile', () => {
     });
 
     it('TC-P3 - Saved profile information remains after reload', () => {
-        cy.visit('http://localhost/559-Capstone-Mohawk-capstone-LocalConnect/profile.php');
+        cy.visit('http://localhost/profile.php');
 
         cy.contains('Cypress Test User').should('be.visible');
         cy.contains('Hamilton, ON').should('be.visible');

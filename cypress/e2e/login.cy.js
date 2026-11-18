@@ -1,7 +1,7 @@
 describe('LocalConnect Login', () => {
 
     it('TC-F1 - Valid login loads the dashboard', () => {
-        cy.visit('http://localhost/559-Capstone-Mohawk-capstone-LocalConnect/login.php');
+        cy.visit('http://localhost/login.php');
 
         cy.get('input[name="email"]').type('user3@example.com');
         cy.get('input[name="password"]').type('Testing@12');
@@ -19,7 +19,7 @@ describe('LocalConnect Login', () => {
     });
 
     it('TC-F2 - Invalid login displays an error message', () => {
-        cy.visit('http://localhost/559-Capstone-Mohawk-capstone-LocalConnect/login.php');
+        cy.visit('http://localhost/login.php');
 
         cy.get('input[name="email"]').type('wrong@example.com');
         cy.get('input[name="password"]').type('WrongPassword1!');
