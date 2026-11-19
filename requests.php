@@ -27,6 +27,27 @@ $stmt = $pdo->prepare(
 
 $stmt->execute([$user['id']]);
 $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//Fetch requests sent by the current user.
+$stmt = $pdo->prepare(
+    "SELECT
+        r.id,
+        r.post_id,
+        r.message,
+        r.status,
+        r.created_at,
+        p.title AS post_title,
+        u.full_name AS receiver_name
+     FROM requests r
+     INNER JOIN posts p ON p.id = r.post_id
+     INNER JOIN users u ON u.id = r.receiver_id
+     WHERE r.sender_id = ?
+     ORDER BY r.created_at DESC"
+);
+
+$stmt->execute([$user['id']]);
+$sentRequests = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <?php include __DIR__ . '/includes/header.php'; ?>
