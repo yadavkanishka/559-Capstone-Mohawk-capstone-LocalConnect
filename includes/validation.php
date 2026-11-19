@@ -1,5 +1,3 @@
-
-
 <?php
 function isPasswordValid(string $password) {
     // At least 8 characters

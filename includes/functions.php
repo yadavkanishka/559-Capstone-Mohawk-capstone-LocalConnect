@@ -1,6 +1,5 @@
 <?php
 // Shared helper functions
-
 // Escape output -> Cross-Site Scripting protection
 function e($value) {
     return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');

@@ -1,7 +1,5 @@
-
-<!-- test.php for testing if everythings is working well on the browser !-->
-
 <?php
+// test.php for testing if everythings is working well on the browser 
 require_once 'config/db.php';
 
 try {

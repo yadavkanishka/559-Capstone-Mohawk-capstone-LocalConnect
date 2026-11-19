@@ -1,4 +1,3 @@
-
 <div class="card post-card">
 
     <div class="post-card-top">
