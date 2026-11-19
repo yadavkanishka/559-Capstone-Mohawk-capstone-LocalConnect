@@ -1,66 +1,65 @@
 <?php
-session_start();
-
-require_once 'config/db.php';
-require_once __DIR__ . '/includes/functions.php';
-require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/config/config.php';
 
 $message = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Default destination after successful login.
+$redirect = $_GET['redirect'] ?? $_POST['redirect'] ?? '/dashboard.php';
 
-    $email = trim($_POST['email']);
-    $userPassword = $_POST['password'];
+// Allow only safe internal redirects.
+if (
+    !is_string($redirect) ||
+    $redirect === '' ||
+    $redirect[0] !== '/' ||
+    str_starts_with($redirect, '//') ||
+    parse_url($redirect, PHP_URL_HOST) !== null
+) {
+    $redirect = '/dashboard.php';
+}
 
-    // Check required fields
-    if (empty($email) || empty($userPassword)) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    verify_csrf();
+
+    $email = trim($_POST['email'] ?? '');
+    $userPassword = $_POST['password'] ?? '';
+
+    if ($email === '' || $userPassword === '') {
         $message = "Email and password are required.";
-    }
 
-    // Validate email
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $message = "Please enter a valid email address.";
-    }
 
-    else {
+    } else {
         try {
             $conn = getDBConnection();
 
-            // Find user by email
             $stmt = $conn->prepare(
                 "SELECT id, email, password_hash, full_name, role
                  FROM users
-                 WHERE email = :email"
+                 WHERE email = ?"
             );
 
-            $stmt->execute([
-                ':email' => $email
-            ]);
+            $stmt->execute([$email]);
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Check password
             if ($user && password_verify($userPassword, $user['password_hash'])) {
 
-                // Store login information in session
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['full_name'] = $user['full_name'];
-                $_SESSION['role'] = $user['role'];
+                login_user($user);
 
-                header('Location: dashboard.php');
-                exit;
+                redirect($redirect);
+
             } else {
                 $message = "Invalid email or password.";
             }
 
-        } catch (PDOException $e) {
+        } catch (Throwable $e) {
+            error_log("Login error: " . $e->getMessage());
             $message = "Login failed. Please try again.";
         }
     }
 }
-
-
 
 $page_title = 'Login';
 require_once __DIR__ . '/includes/header.php';
@@ -83,6 +82,13 @@ require_once __DIR__ . '/includes/header.php';
         <?php endif; ?>
 
         <form method="POST" action="">
+             <?= csrf_field() ?>
+
+            <input
+                type="hidden"
+                name="redirect"
+                value="<?= e($redirect) ?>"
+            >
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input
