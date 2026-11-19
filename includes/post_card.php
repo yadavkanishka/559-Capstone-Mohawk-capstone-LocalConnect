@@ -89,26 +89,62 @@
         
     <div class="post-request-section">
 
-        <?php if (!is_logged_in()): ?>
+    <?php if (!is_logged_in()): ?>
 
-            <a
-                href="/login.php"
-                class="btn btn-primary"
-            >
-                Log in to Send Request
-            </a>
+        <a href="/login.php" class="btn btn-primary">
+            Log in to Send Request
+        </a>
 
-        <?php elseif ((int) current_user()['id'] !== (int) $p['user_id']): ?>
+    <?php elseif ((int) current_user()['id'] !== (int) $p['user_id']): ?>
+
+        <?php if (($p['my_request_status'] ?? null) === 'pending'): ?>
+
+            <div class="request-status request-pending">
+                <strong>✓ Request Sent Successfully!</strong>
+                <p>Your collaboration request is awaiting a response.</p>
+                <span>Status: Pending</span>
+            </div>
+
+        <?php elseif (($p['my_request_status'] ?? null) === 'accepted'): ?>
+
+            <div class="request-status request-accepted">
+                <strong>✓ Request Accepted!</strong>
+                <p>Your collaboration request has been accepted.</p>
+            </div>
+
+        <?php elseif (($p['my_request_status'] ?? null) === 'declined'): ?>
+
+            <div class="request-status request-declined">
+                <strong>Request Declined</strong>
+                <p>Your previous request was declined. You can try again.</p>
+
+                <form method="POST" action="/send-request.php">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="post_id" value="<?= (int) $p['id'] ?>">
+
+                    <label for="request-message-<?= (int) $p['id'] ?>">
+                        Personal message (optional)
+                    </label>
+
+                    <textarea
+                        id="request-message-<?= (int) $p['id'] ?>"
+                        name="message"
+                        maxlength="1000"
+                        placeholder="Tell the post owner why you'd like to collaborate..."
+                    ></textarea>
+
+                    <button type="submit" class="btn btn-primary">
+                        Send Another Request
+                    </button>
+                </form>
+            </div>
+
+        <?php else: ?>
 
             <form method="POST" action="/send-request.php">
-
                 <?= csrf_field() ?>
 
-                <input
-                    type="hidden"
-                    name="post_id"
-                    value="<?= (int) $p['id'] ?>"
-                >
+                <input type="hidden" name="post_id" value="<?= (int) $p['id'] ?>">
 
                 <label for="request-message-<?= (int) $p['id'] ?>">
                     Personal message (optional)
@@ -124,11 +160,12 @@
                 <button type="submit" class="btn btn-primary">
                     Send Request
                 </button>
-
             </form>
 
         <?php endif; ?>
 
-    </div>
+    <?php endif; ?>
+
+</div>
 
 </div>

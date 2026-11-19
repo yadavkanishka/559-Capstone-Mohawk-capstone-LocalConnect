@@ -41,10 +41,45 @@ switch ($sort) {
         $sort = 'date_desc';
 }
 
-$sql = "SELECT p.*, u.full_name FROM posts p JOIN users u ON u.id = p.user_id $whereSql $orderSql";
+if (is_logged_in()) {
+    $currentUserId = (int) current_user()['id'];
 
-$stmt = $pdo->prepare($sql);
-$stmt->execute($params);
+    $sql = "
+        SELECT
+            p.*,
+            u.full_name,
+            (
+                SELECT r.status
+                FROM requests r
+                WHERE r.post_id = p.id
+                  AND r.sender_id = ?
+                ORDER BY r.id DESC
+                LIMIT 1
+            ) AS my_request_status
+        FROM posts p
+        JOIN users u ON u.id = p.user_id
+        $whereSql
+        $orderSql
+    ";
+
+    $paramsWithUser = array_merge([$currentUserId], $params);
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($paramsWithUser);
+
+} else {
+    $sql = "
+        SELECT p.*, u.full_name
+        FROM posts p
+        JOIN users u ON u.id = p.user_id
+        $whereSql
+        $orderSql
+    ";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+}
+
 
 $posts = $stmt->fetchAll();
 

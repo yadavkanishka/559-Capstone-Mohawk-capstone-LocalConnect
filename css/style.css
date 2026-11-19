@@ -1980,3 +1980,92 @@ footer p {
         width: 100%;
     }
 }
+
+
+/* ==============================
+   POST REQUEST SECTION
+============================== */
+
+.post-request-section {
+    padding: 20px;
+    border-top: 1px solid var(--border);
+    background: #FFFFFF;
+}
+
+.post-request-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+}
+
+.post-request-section label {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.post-request-section textarea {
+    min-height: 90px;
+    margin: 0;
+}
+
+.post-request-section .btn {
+    align-self: flex-start;
+}
+
+/* Request status messages */
+
+.request-status {
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.request-status strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.request-status p {
+    margin: 0 0 8px;
+    color: var(--muted);
+}
+
+.request-status span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.request-pending {
+    background: var(--primary-soft);
+    border-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.request-accepted {
+    background: #EFFAF5;
+    border-color: #CDEBDD;
+    color: var(--success);
+}
+
+.request-declined {
+    background: #FFF5F5;
+    border-color: #F5DADA;
+    color: var(--danger);
+}
+
+.request-declined form {
+    margin-top: 14px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 480px) {
+    .post-request-section {
+        padding: 16px;
+    }
+
+    .post-request-section .btn {
+        width: 100%;
+    }
+}
