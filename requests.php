@@ -31,12 +31,17 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php include __DIR__ . '/includes/header.php'; ?>
 
-<main class="container">
-    <h1>Collaboration Requests</h1>
-    <p>Manage requests from people interested in collaborating with you.</p>
+<main class="requests-page">
+    <div class="requests-header">
+        <h1>Collaboration Requests</h1>
+        <p>Manage requests from people interested in collaborating with you.</p>
+    </div>
+    
 
     <?php if (empty($requests)): ?>
-        <p>You haven't received any collaboration requests yet.</p>
+       <div class="request-empty">
+            You haven't received any collaboration requests yet.
+        </div>
     <?php else: ?>
 
         <?php foreach ($requests as $request): ?>
@@ -56,7 +61,9 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <p>
                     <strong>Status:</strong>
-                    <?= e(ucfirst($request['status'])) ?>
+                    <span class="request-status">
+                        <?= e($request['status']) ?>
+                    </span>
                 </p>
 
                 <p>

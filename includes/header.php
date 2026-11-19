@@ -32,6 +32,7 @@ if (!isset($page_title)) {
                 <a class="nav-link" href="/profile.php">My Profile</a>
                 <a class="nav-link" href="/post-create.php">Create Post</a>
                 <a class="nav-link" href="/dashboard.php">Dashboard</a>
+                <a class="nav-link" href="/requests.php">Requests</a>
             <?php else: ?>
                 <a class="nav-link" href="/login.php">Login</a>
                 <a class="nav-link" href="/register.php">Register</a>
