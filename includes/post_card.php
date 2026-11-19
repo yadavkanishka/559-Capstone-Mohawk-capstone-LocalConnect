@@ -86,5 +86,49 @@
             </div>
         <?php endif; ?>
     </div>
+        
+    <div class="post-request-section">
+
+        <?php if (!is_logged_in()): ?>
+
+            <a
+                href="/login.php"
+                class="btn btn-primary"
+            >
+                Log in to Send Request
+            </a>
+
+        <?php elseif ((int) current_user()['id'] !== (int) $p['user_id']): ?>
+
+            <form method="POST" action="/send-request.php">
+
+                <?= csrf_field() ?>
+
+                <input
+                    type="hidden"
+                    name="post_id"
+                    value="<?= (int) $p['id'] ?>"
+                >
+
+                <label for="request-message-<?= (int) $p['id'] ?>">
+                    Personal message (optional)
+                </label>
+
+                <textarea
+                    id="request-message-<?= (int) $p['id'] ?>"
+                    name="message"
+                    maxlength="1000"
+                    placeholder="Tell the post owner why you'd like to collaborate..."
+                ></textarea>
+
+                <button type="submit" class="btn btn-primary">
+                    Send Request
+                </button>
+
+            </form>
+
+        <?php endif; ?>
+
+    </div>
 
 </div>
