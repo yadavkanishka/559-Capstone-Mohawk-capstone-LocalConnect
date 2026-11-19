@@ -37,6 +37,9 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p>Manage requests from people interested in collaborating with you.</p>
     </div>
     
+     <section class="requests-section">
+        <h2>Received Requests</h2>
+        <p class="muted">Requests from people interested in your collaborations.</p>
 
     <?php if (empty($requests)): ?>
        <div class="request-empty">
@@ -107,6 +110,55 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
 
     <?php endif; ?>
+    </section>
+     <!-- SENT REQUESTS -->
+        <section class="requests-section">
+        <h2>Sent Requests</h2>
+        <p class="muted">Track the collaboration requests you've sent to others.</p>
+
+        <?php if (empty($sentRequests)): ?>
+
+            <div class="request-empty">
+                You haven't sent any collaboration requests yet.
+            </div>
+
+        <?php else: ?>
+
+            <?php foreach ($sentRequests as $request): ?>
+
+                <div class="card request-card">
+
+                    <h3><?= e($request['post_title']) ?></h3>
+
+                    <p>
+                        <strong>To:</strong>
+                        <?= e($request['receiver_name']) ?>
+                    </p>
+
+                    <p>
+                        <strong>Your message:</strong>
+                        <?= e($request['message'] ?: 'No message provided.') ?>
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        <span class="request-status">
+                            <?= e($request['status']) ?>
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Sent:</strong>
+                        <?= e(format_date($request['created_at'])) ?>
+                    </p>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        <?php endif; ?>
+    </section>
+
 </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
