@@ -10,7 +10,13 @@ $sort = $_GET['sort'] ?? 'date_desc';
 $where = [];
 $params = [];
 if ($q !== '') {
-    $where[] = "(p.title LIKE ? OR p.description LIKE ?)";
+    $where[] = "(
+        p.title LIKE ?
+        OR p.description LIKE ?
+        OR p.required_skills LIKE ?
+    )";
+
+    $params[] = "%$q%";
     $params[] = "%$q%";
     $params[] = "%$q%";
 }
